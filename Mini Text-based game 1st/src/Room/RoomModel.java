@@ -50,7 +50,7 @@ public class RoomModel {
     @Override
     public String toString() {
         return String.format("%s%n%s%n%s%n%s",
-                getRoomNumber(), getRoomName(), getRoomConnections(), isVisited());
+                getRoomNumber(), getRoomName(), getRoomDescription(), isVisited());
     }
 
     public String iterateRoomConnection() {

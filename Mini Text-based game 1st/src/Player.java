@@ -21,7 +21,7 @@ public class Player {
         isTraveled.put(roomNumber, true);
     }
 
-    public String checkIfRoomVisited(int roomNumber) {
+    private String checkIfRoomVisited(int roomNumber) {
         if (isTraveled.containsKey(roomNumber)) {
             return "This room seems familiar...";
         }

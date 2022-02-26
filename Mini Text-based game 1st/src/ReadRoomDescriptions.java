@@ -6,6 +6,8 @@ import java.util.Scanner;
 
 public class ReadRoomDescriptions extends ReadTextFile {
 
+    private int currentRoom = 0;
+
     public ReadRoomDescriptions(String filePath) {
         super(filePath);
     }
@@ -17,22 +19,27 @@ public class ReadRoomDescriptions extends ReadTextFile {
 
             Scanner scanner = new Scanner(file);
 
-            int currentRoom = 0;
+            currentRoom = 0;
             while (scanner.hasNext()) {
                 currentRoom++; // init to 1 for hashmap
 
                 String line = scanner.nextLine();
 
-                String[] words = line.split("\\s+");
+                String[] words = line.split("\\.+");
 
                 // Use word count to determine number of dimensions in 2D array
                 int wordCount = words.length;
-                int oneDimensionCount = wordCount / 2;
+
+                // Append periods to room description and remove any spaces.
+                for (int i = 1; i < words.length; i++) {
+                    String sentence = words[i];
+                    words[i] = sentence.stripLeading().stripTrailing() + ".";
+                }
 
                 LinkedList<String> arrayCopy = new LinkedList<>(List.of(words));
 
                 // Init new array that is custom for the number of room connections
-                String[][] roomData = new String[oneDimensionCount][2];
+                String[][] roomData = new String[1][wordCount];
 
                 for (int i = 0; i < roomData.length; i++) {
                     for (int j = 0; j < roomData[i].length; j++) {
@@ -45,5 +52,9 @@ public class ReadRoomDescriptions extends ReadTextFile {
         catch (FileNotFoundException e) {
             System.out.printf("The %s file was not found.%n", getFilePath());
         }
+    }
+
+    public int getCurrentRoom() {
+        return currentRoom;
     }
 }

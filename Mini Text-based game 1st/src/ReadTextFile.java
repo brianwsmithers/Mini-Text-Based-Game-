@@ -4,6 +4,7 @@ public abstract class ReadTextFile {
 
     private final String filePath;
     private final HashMap<Integer, String[][]> hashMap = new HashMap<>();
+    private StringBuilder sb = new StringBuilder();
 
     public ReadTextFile(String filePath) {
         this.filePath = filePath;
@@ -11,10 +12,13 @@ public abstract class ReadTextFile {
 
     abstract void read();
 
-    public void printMap() {
+    public StringBuilder printMap() {
+        sb.setLength(0);
         for (Map.Entry<Integer, String[][]> set : hashMap.entrySet()) {
-            System.out.println(set.getKey() + " " + Arrays.deepToString(set.getValue()));
+            sb.append(set.getKey()).append(" ").append(
+                    Arrays.deepToString(set.getValue())).append("\n");
         }
+        return sb;
     }
 
     public String getFilePath() {

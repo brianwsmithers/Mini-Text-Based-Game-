@@ -6,13 +6,13 @@ public class Room {
 
     private int roomNumber;
     private String roomName;
-    private StringBuilder roomDescription;
+    private String roomDescription;
     private static StringBuilder sb = new StringBuilder();
     private final String[][] roomConnections;
 
     private static final HashMap<Integer, Room> listOfRooms = new HashMap<>();
 
-    public Room(int roomNumber, String roomName, StringBuilder roomDescription, String[][] roomConnections) {
+    public Room(int roomNumber, String roomName, String roomDescription, String[][] roomConnections) {
         if (roomNumber > 0) {
             this.roomNumber = roomNumber;
         }
@@ -29,7 +29,7 @@ public class Room {
         return roomName;
     }
 
-    public StringBuilder getRoomDescription() {
+    public String getRoomDescription() {
         return roomDescription;
     }
 
@@ -55,7 +55,7 @@ public class Room {
 
     @Override
     public String toString() {
-        return String.format("%s %s %s %s %n", getRoomNumber(), getRoomName(), getRoomDescription(),
+        return String.format("%s %s %s %s", getRoomNumber(), getRoomName(), getRoomDescription(),
                 Arrays.deepToString(roomConnections));
     }
 }

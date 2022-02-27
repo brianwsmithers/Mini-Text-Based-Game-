@@ -4,7 +4,7 @@ public abstract class ReadTextFile {
 
     private final String filePath;
     private final HashMap<Integer, String[][]> hashMap = new HashMap<>();
-    private StringBuilder sb = new StringBuilder();
+    private final StringBuilder sb = new StringBuilder();
 
     public ReadTextFile(String filePath) {
         this.filePath = filePath;

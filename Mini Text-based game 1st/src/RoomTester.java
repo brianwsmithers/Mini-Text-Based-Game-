@@ -1,3 +1,4 @@
+import java.util.Objects;
 import java.util.Scanner;
 
 public class RoomTester {
@@ -21,7 +22,7 @@ public class RoomTester {
         // Read all room data and make a room object for each room.
         // Put each room object in a static hashmap.
         for (int i = 1; i < numberOfRooms + 1; i++) {
-            String sbDescription = "";
+            String description = "";
             roomConnections = readRoomConnections.getHashMap().get(i);
             roomDescription = readRoomDescriptions.getHashMap().get(i);
             String roomName = roomDescription[0][0];
@@ -29,10 +30,16 @@ public class RoomTester {
             for (String[] strings : roomDescription) {
                 // Start k at 1 to only get room descriptions
                 for (int k = 1; k < strings.length; k++) {
-                    sbDescription += strings[k];
+                    String newString = strings[k];
+                    if (newString.chars().count() >= 70) {
+                        description += strings[k] + "\n";
+                    }
+                    else {
+                        description += strings[k] + " ";
+                    }
                 }
 
-                Room room = new Room(i, roomName, sbDescription, roomConnections);
+                Room room = new Room(i, roomName, description, roomConnections);
                 room.addRoom(room);
             }
         }
@@ -41,21 +48,19 @@ public class RoomTester {
         Player player = new Player(1);
 
         // Print location and mark it as visited.
-        // player.roomPrompt();
+        Room startingRoom = Objects.requireNonNull(Room.getRoom(player.getRoomNumber()));
+        player.roomPrompt(startingRoom);
         player.addRoomToTraveledList(player.getRoomNumber());
 
-        for (int i = 1; i < 8; i++) {
-            System.out.println(Room.getRoom(i).toString());
+        String direction = "";
+        while (!direction.equalsIgnoreCase("-1")) {
+            System.out.println(
+                    "Which direction do you want to travel in? (North, South, East, West)");
+            Scanner input = new Scanner(System.in);
+            direction = input.nextLine();
+            player.traverse(direction);
         }
-//        String direction = "";
-//        while (!direction.equalsIgnoreCase("-1")) {
-//            System.out.println(
-//                    "\nWhich room do you want to travel to? (North, South, East, West)");
-//            Scanner input = new Scanner(System.in);
-//            direction = input.nextLine();
-//            player.traverse(direction);
-//        }
-//        // Exit on "-1"
-//        System.out.println("Exiting game...");
+        // Exit on "-1"
+        System.out.println("Exiting game...");
     }
 }

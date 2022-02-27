@@ -27,7 +27,7 @@ public class Player {
             return "This room seems familiar...";
         }
         else {
-            return "You don't recognize this room.";
+            return "You don't recognize this place.";
         }
     }
 
@@ -41,14 +41,14 @@ public class Player {
 
     public void traverse(String direction) {
         // Copy room object
-        Room roomObject = Objects.requireNonNull(Room.getRoom(getRoomNumber()));
+        Room currentRoom = Objects.requireNonNull(Room.getRoom(getRoomNumber()));
 
-        String[][] rooms = roomObject.getRoomConnections();
+        String[][] roomConnections = currentRoom.getRoomConnections();
 
         // Do not iterate if direction is "-1"
         boolean nextPass = direction.equalsIgnoreCase("-1");
 
-        for (String[] room : rooms) {
+        for (String[] room : roomConnections) {
             if (!nextPass) {
                 for (int j = 0; j < room.length; j++) {
                     if (room[j].equalsIgnoreCase(direction)) {
@@ -56,9 +56,9 @@ public class Player {
                         setRoomNumber(newRoomNumber);
                         nextPass = true;
 
-                        roomObject = Objects.requireNonNull(Room.getRoom(newRoomNumber));
+                        Room newRoom = Objects.requireNonNull(Room.getRoom(newRoomNumber));
 
-                        roomPrompt(roomObject);
+                        roomPrompt(newRoom);
                         addRoomToTraveledList(getRoomNumber());
                     }
                 }

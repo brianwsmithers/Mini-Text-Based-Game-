@@ -14,14 +14,14 @@ public class RoomTester {
 
         int numberOfRooms = readRoomDescriptions.getCurrentRoom();
 
-        String[][] roomDescription;
         String[][] roomConnections;
-        StringBuilder sbDescription = new StringBuilder();
+        String[][] roomDescription;
+
 
         // Read all room data and make a room object for each room.
         // Put each room object in a static hashmap.
         for (int i = 1; i < numberOfRooms + 1; i++) {
-            sbDescription.setLength(0);
+            String sbDescription = "";
             roomConnections = readRoomConnections.getHashMap().get(i);
             roomDescription = readRoomDescriptions.getHashMap().get(i);
             String roomName = roomDescription[0][0];
@@ -29,7 +29,7 @@ public class RoomTester {
             for (String[] strings : roomDescription) {
                 // Start k at 1 to only get room descriptions
                 for (int k = 1; k < strings.length; k++) {
-                    sbDescription.append(strings[k]);
+                    sbDescription += strings[k];
                 }
 
                 Room room = new Room(i, roomName, sbDescription, roomConnections);
@@ -44,8 +44,9 @@ public class RoomTester {
         // player.roomPrompt();
         player.addRoomToTraveledList(player.getRoomNumber());
 
-        System.out.println(Room.getRoom(1).toString());
-
+        for (int i = 1; i < 8; i++) {
+            System.out.println(Room.getRoom(i).toString());
+        }
 //        String direction = "";
 //        while (!direction.equalsIgnoreCase("-1")) {
 //            System.out.println(

@@ -1,0 +1,6 @@
+The following commands are recognized in the game. They are case insensitive and the game cannot detect mispelled words.
+
+North 
+South
+East
+West

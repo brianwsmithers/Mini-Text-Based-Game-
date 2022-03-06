@@ -49,6 +49,10 @@ public class Console {
                     System.out.println(playersRoom.getRoomInventory()
                             .transferItem(roomName, "drop", player.getPlayerInventory().
                                     getInventory1(), item.stripTrailing()));
+                    break;
+                case "inventory":
+                    System.out.println(player.getPlayerInventory().printInventory(player));
+                    break;
                 case "exit":
                     break;
                 default:
@@ -83,6 +87,7 @@ public class Console {
                 "Pickup%n" +
                 "Inspect%n" +
                 "Drop%n" +
+                "Inventory%n" +
                 "Exit%n");
     }
 

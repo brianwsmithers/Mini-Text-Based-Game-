@@ -36,7 +36,7 @@ public class ReadRoomDescriptions extends ReadTextFile {
                     words[i] = sentence.stripLeading().stripTrailing() + ".";
                 }
 
-                // Init new array that is custom for the number of room connections
+                // Init new array that is custom for the number of room descriptions
                 String[][] roomData = new String[1][wordCount];
 
                 LinkedList<String> arrayCopy = new LinkedList<>(List.of(words));

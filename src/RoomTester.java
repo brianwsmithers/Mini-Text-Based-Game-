@@ -1,5 +1,4 @@
 import java.util.Objects;
-import java.util.Scanner;
 
 public class RoomTester {
     public static void main(String[] args) {
@@ -50,6 +49,18 @@ public class RoomTester {
             }
         }
 
+        // Inventory test
+        Item hammer = new Item("Hammer", "This is a hammer.");
+        Item potion = new Item("Potion", "This is a potion.");
+        Item driedMeat = new Item("Dried Meat", "This is dried meat.");
+
+
+        // INVENTORY TEST METHOD (NOT FINAL)
+        Room testInventoryRoom = Room.getRoom(1);
+        testInventoryRoom.getRoomInventory().addItem(hammer);
+        testInventoryRoom.getRoomInventory().addItem(potion);
+        testInventoryRoom.getRoomInventory().addItem(driedMeat);
+
         // Make new player object and init player to the first room.
         Player player = new Player(1);
 
@@ -59,15 +70,7 @@ public class RoomTester {
         player.addRoomToTraveledList(player.getRoomNumber());
 
         // Ask user where they want to travel and pass input to traverseRooms() in Player class.
-        String direction = "";
-        while (!direction.equalsIgnoreCase("-1")) {
-            System.out.println(
-                    "Which direction do you want to travel in? (North, South, East, West)");
-            Scanner input = new Scanner(System.in);
-            direction = input.nextLine();
-            player.traverseRooms(direction);
-        }
-        // Exit on "-1"
-        System.out.println("Exiting game...");
+        Console console = new Console();
+        console.consoleCommand(player);
     }
 }

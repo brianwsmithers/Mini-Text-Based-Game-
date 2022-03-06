@@ -1,5 +1,6 @@
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.Map;
 
 public class Room {
@@ -9,9 +10,11 @@ public class Room {
     private final String roomDescription;
     private static StringBuilder sb = new StringBuilder();
     private final String[][] roomConnections;
+    private final Inventory roomInventory = new Inventory();
 
     private static final HashMap<Integer, Room> listOfRooms = new HashMap<>();
 
+    // All variables
     public Room(int roomNumber, String roomName, String roomDescription, String[][] roomConnections) {
         if (roomNumber > 0) {
             this.roomNumber = roomNumber;
@@ -20,6 +23,8 @@ public class Room {
         this.roomDescription = roomDescription;
         this.roomConnections = roomConnections;
     }
+
+
 
     public int getRoomNumber() {
         return roomNumber;
@@ -53,9 +58,14 @@ public class Room {
         return sb;
     }
 
+    public Inventory getRoomInventory() {
+        return roomInventory;
+    }
+
     @Override
     public String toString() {
-        return String.format("%s %s %s %s", getRoomNumber(), getRoomName(), getRoomDescription(),
+        return String.format("%s %s %s %s", getRoomNumber(), getRoomName(),
+                getRoomDescription(),
                 Arrays.deepToString(roomConnections));
     }
 }

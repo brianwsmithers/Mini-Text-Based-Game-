@@ -5,6 +5,7 @@ public class Player {
 
     private int roomNumber;
     private final HashMap<Integer, Boolean> isTraveled = new HashMap<>();
+    private final Inventory playerInventory = new Inventory();
 
     public Player(int roomNumber) {
         this.roomNumber = roomNumber;
@@ -61,7 +62,7 @@ public class Player {
                         // Copy room object for the players new room
                         Room newRoom = Objects.requireNonNull(Room.getRoom(newRoomNumber));
 
-                        roomPrompt(newRoom); // Display room details
+                        roomPrompt(newRoom); // Display new room details
                         addRoomToTraveledList(getRoomNumber()); // Mark room visited
                         nextPass = true; // Stop iterating
                     }
@@ -73,4 +74,7 @@ public class Player {
         }
     }
 
+    public Inventory getPlayerInventory() {
+        return playerInventory;
+    }
 }

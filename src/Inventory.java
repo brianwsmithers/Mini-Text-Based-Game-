@@ -50,23 +50,35 @@ public class Inventory {
 
     // Print room inventory contents
     public String printInventory(Object object) {
+        StringBuilder roomInventorySB = new StringBuilder();
         String caller = object.getClass().getName();
-        String text = "";
 
         if (caller.equalsIgnoreCase("room")) {
-            text = "room";
-        }
-        StringBuilder roomInventorySB = new StringBuilder();
-        if (inventory1.isEmpty()) {
-            return String.format("The %s does not have any items...%n", text);
-        }
-        else {
-            String append = String.format("The %s has the following items:", text);
-            roomInventorySB.append(append).append("\n");
-            for (Item item : inventory1) {
-                roomInventorySB.append(item.getName()).append("\n");
+            if (inventory1.isEmpty()) {
+                return String.format("The room does not have any items...%n");
+            }
+            else {
+                String append = "The room has the following items:";
+                roomInventorySB.append(append).append("\n");
+                for (Item item : inventory1) {
+                    roomInventorySB.append(item.getName()).append("\n");
+                }
             }
         }
+        else if (caller.equalsIgnoreCase("player")) {
+            if (inventory1.isEmpty()) {
+                return String.format("You did not pickup any items yet...%n");
+            }
+            else {
+                String append = "Your inventory has the following items:";
+                roomInventorySB.append(append).append("\n");
+                for (Item item : inventory1) {
+                    roomInventorySB.append(item.getName()).append("\n");
+                }
+            }
+        }
+
+
         return roomInventorySB.toString();
     }
 

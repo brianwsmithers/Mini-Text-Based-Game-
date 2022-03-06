@@ -56,10 +56,13 @@ public class RoomTester {
 
 
         // INVENTORY TEST METHOD (NOT FINAL)
-        Room testInventoryRoom = Room.getRoom(1);
-        testInventoryRoom.getRoomInventory().addItem(hammer);
-        testInventoryRoom.getRoomInventory().addItem(potion);
-        testInventoryRoom.getRoomInventory().addItem(driedMeat);
+        Room addItemsToRoom1Inventory = Room.getRoom(1);
+        Room addItemsToRoom2Inventory = Room.getRoom(2);
+        Room addItemsToRoom5Inventory = Room.getRoom(5);
+
+        addItemsToRoom1Inventory.getRoomInventory().addItem(hammer);
+        addItemsToRoom2Inventory.getRoomInventory().addItem(potion);
+        addItemsToRoom5Inventory.getRoomInventory().addItem(driedMeat);
 
         // Make new player object and init player to the first room.
         Player player = new Player(1);

@@ -1,5 +1,7 @@
 import java.util.HashMap;
+import java.util.InputMismatchException;
 import java.util.Objects;
+import java.util.Scanner;
 
 public class Player {
 
@@ -42,9 +44,21 @@ public class Player {
             System.out.println("");
             System.out.println("Puzzle: " + room.getRoomInventory().getPuzzleInventory()
                     .get(0).getPuzzleDescription());
+
+            try {
+                Scanner scanner = new Scanner(System.in);
+                String input = scanner.nextLine();
+
+                if (input.equalsIgnoreCase(room.getRoomInventory().getPuzzleInventory()
+                        .get(0).getPuzzleAnswer())) {
+                    System.out.println("You solved the puzzle correctly!");
+                    room.getRoomInventory().getPuzzleInventory().remove(0);
+                }
+            } catch (InputMismatchException ex) {
+                ex.printStackTrace();
+            }
         }
     }
-
 
     public void traverseRooms(String direction) {
         // Copy room object for the players current room

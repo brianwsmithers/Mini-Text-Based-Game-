@@ -1,6 +1,29 @@
 The following commands are recognized in the game. They are case insensitive and the game cannot detect mispelled words.
 
-North 
-South
-East
-West
+Command: Travel
+Description: Allows the player to travel to different rooms.
+Instructions: Type "travel" and press enter. A prompt will appear with the following text, "Which direction do you want to travel in? (North, South, East, West)" Type one of the directions and hit enter.
+
+Command: Explore
+Description: Displays a list of items that are in the player's current room.
+Instructions: Type "explore" and press enter. A prompt will appear with the following text, "The room has the following items: item1, item2, ... etc. Rooms that do not contain items will prompt the user with the following text, "The room does not have any items...".
+
+Command: Pickup
+Description: Allows the player to pickup items in their current room.
+Instructions: After discovering what items are in the room, type "pickup item" and press enter. If the item is a multi-lined item, e.g. "Dried meat" type the following text, "pickup dried meat". A prompt will appear to notify the user if the item was successfully picked up.
+
+Command: Inspect
+Description: Allows the player to see the description of an item in their inventory.
+Instructions: After picking up an item, type the following text, "inspect item". If the item is a multi-lined item, e.g. "Dried meat" type the following text, "inspect dried meat". A prompt will appear to notify the user of the items description.
+
+Command: Drop
+Description: Allows the player to drop items from their inventory into the current room.
+Instructions: After picking up an item, type the following text, "drop item". If the item is a multi-lined item, e.g. "Dried meat" type the following text, "drop dried meat". A prompt will appear to notify the user if the item was successfully dropped from their inventory.
+
+Command: Inventory
+Description: Allows the player to view the items stored in their inventory.
+Instructions: Type "inventory" and press enter. A prompt will appear with the following text, "Your inventory has the following items: item1, item2, ... etc. If the player does not have any items the following text will appear, "You did not pickup any items yet...".
+
+Command: Exit
+Description: Allows the player to exit the game.
+Instructions: Type "exit" and press enter. The game will immediately exit after pressing enter.

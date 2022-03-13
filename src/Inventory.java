@@ -77,8 +77,6 @@ public class Inventory {
                 }
             }
         }
-
-
         return roomInventorySB.toString();
     }
 

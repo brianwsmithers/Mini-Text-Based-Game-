@@ -2,10 +2,13 @@ public class Item {
 
     private final String name;
     private final String description;
+    private final int itemSpawnLocation;
 
-    public Item(String name, String description) {
+    public Item(int itemSpawnLocation, String name, String description) {
+        this.itemSpawnLocation = itemSpawnLocation;
         this.name = name;
         this.description = description;
+
     }
 
     public String getName() {
@@ -14,6 +17,10 @@ public class Item {
 
     public String getDescription() {
         return description;
+    }
+
+    public int getItemSpawnLocation() {
+        return itemSpawnLocation;
     }
 
     @Override

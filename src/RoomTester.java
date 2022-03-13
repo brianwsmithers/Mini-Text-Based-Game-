@@ -12,6 +12,10 @@ public class RoomTester {
                 "src/RoomDescription");
         readRoomDescriptions.read(); // read descriptions
 
+        // Make object to read in items
+        ReadItems readItems = new ReadItems("src/RoomInventory.txt");
+        readItems.read();
+
         // Get room count for for-loop condition
         int numberOfRooms = readRoomDescriptions.getCurrentRoom();
 
@@ -45,24 +49,17 @@ public class RoomTester {
 
                 // Make new room and add to static hashmap room list
                 Room room = new Room(i, roomName, description, roomConnections);
+
+                for (int j = 0; j < readItems.getItems().size(); j++) {
+                    if (readItems.getItems().get(j).getItemSpawnLocation() == i) {
+                        room.getRoomInventory().addItem(readItems.getItems().get(j));
+                        readItems.getItems().remove(j);
+                    }
+                }
+
                 room.addRoom(room);
             }
         }
-
-        // Inventory test
-        Item hammer = new Item("Hammer", "This is a hammer.");
-        Item potion = new Item("Potion", "This is a potion.");
-        Item driedMeat = new Item("Dried Meat", "This is dried meat.");
-
-
-        // INVENTORY TEST METHOD (NOT FINAL)
-        Room addItemsToRoom1Inventory = Room.getRoom(1);
-        Room addItemsToRoom2Inventory = Room.getRoom(2);
-        Room addItemsToRoom5Inventory = Room.getRoom(5);
-
-        addItemsToRoom1Inventory.getRoomInventory().addItem(hammer);
-        addItemsToRoom2Inventory.getRoomInventory().addItem(potion);
-        addItemsToRoom5Inventory.getRoomInventory().addItem(driedMeat);
 
         // Make new player object and init player to the first room.
         Player player = new Player(1);

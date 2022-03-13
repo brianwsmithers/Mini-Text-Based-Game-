@@ -37,6 +37,12 @@ public class Player {
         System.out.println(room.getRoomName());
         System.out.println(checkIfRoomVisited(getRoomNumber()));
         System.out.println(room.getRoomDescription());
+
+        if (!room.getRoomInventory().getPuzzleInventory().isEmpty()) {
+            System.out.println("");
+            System.out.println("Puzzle: " + room.getRoomInventory().getPuzzleInventory()
+                    .get(0).getPuzzleDescription());
+        }
     }
 
 

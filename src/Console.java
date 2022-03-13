@@ -39,7 +39,7 @@ public class Console {
                 case "pickup":
                     System.out.println(player.getPlayerInventory().
                             transferItem(roomName, "pickup", playersRoom.getRoomInventory().
-                                    getInventory1(), item.stripTrailing()));
+                                    getItemInventory(), item.stripTrailing()));
                     break;
                 case "inspect":
                     System.out.println(player.getPlayerInventory().inspect(
@@ -48,10 +48,10 @@ public class Console {
                 case "drop":
                     System.out.println(playersRoom.getRoomInventory()
                             .transferItem(roomName, "drop", player.getPlayerInventory().
-                                    getInventory1(), item.stripTrailing()));
+                                    getItemInventory(), item.stripTrailing()));
                     break;
                 case "inventory":
-                    System.out.println(player.getPlayerInventory().printInventory(player));
+                    System.out.println(player.getPlayerInventory().printItemInventory(player));
                     break;
                 case "exit":
                     break;
@@ -75,7 +75,7 @@ public class Console {
     }
 
     private void printRoomInventory(Room room) {
-        System.out.println(room.getRoomInventory().printInventory(room));
+        System.out.println(room.getRoomInventory().printItemInventory(room));
     }
 
     private void printConsoleCommandMenu() {

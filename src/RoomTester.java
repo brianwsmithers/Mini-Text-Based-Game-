@@ -16,6 +16,10 @@ public class RoomTester {
         ReadItems readItems = new ReadItems("src/RoomInventory.txt");
         readItems.read();
 
+        // Make object to read in puzzles
+        ReadPuzzles readPuzzles = new ReadPuzzles("src/RoomPuzzle.txt");
+        readPuzzles.read();
+
         // Get room count for for-loop condition
         int numberOfRooms = readRoomDescriptions.getCurrentRoom();
 
@@ -50,10 +54,19 @@ public class RoomTester {
                 // Make new room and add to static hashmap room list
                 Room room = new Room(i, roomName, description, roomConnections);
 
+                // Put all items into their respective room.
                 for (int j = 0; j < readItems.getItems().size(); j++) {
                     if (readItems.getItems().get(j).getItemSpawnLocation() == i) {
                         room.getRoomInventory().addItem(readItems.getItems().get(j));
                         readItems.getItems().remove(j);
+                    }
+                }
+
+                // Put all puzzles into their respective room.
+                for (int k = 0; k < readPuzzles.getPuzzles().size(); k++) {
+                    if (readPuzzles.getPuzzles().get(k).getPuzzleId() == i) {
+                        room.getRoomInventory().addPuzzle(readPuzzles.getPuzzles().get(k));
+                        readPuzzles.getPuzzles().remove(k);
                     }
                 }
 

@@ -63,10 +63,15 @@ public class Player {
                     }
                     else {
                         attempts--;
-                        System.out.printf("The answer you provided is wrong, you still have " +
-                                "%s tries left.", attempts);
                         if (attempts > 0) {
+                            System.out.printf("The answer you provided is wrong, you still have " +
+                                    "%s tries left.", attempts);
                             System.out.println(" Try one more time.");
+                        }
+                        else {
+                            System.out.println("Failed to solve.");
+                            System.out.println();
+                            solved = true;
                         }
                     }
                 } catch (InputMismatchException ex) {

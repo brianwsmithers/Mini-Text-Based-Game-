@@ -45,17 +45,33 @@ public class Player {
             System.out.println("Puzzle: " + room.getRoomInventory().getPuzzleInventory()
                     .get(0).getPuzzleDescription());
 
-            try {
-                Scanner scanner = new Scanner(System.in);
-                String input = scanner.nextLine();
+            int attempts = room.getRoomInventory().getPuzzleInventory().get(0)
+                    .getPuzzleTriesAvailable();
+            boolean solved = false;
+            while (attempts != 0 || !solved) {
+                try {
+                    Scanner scanner = new Scanner(System.in);
+                    String input = scanner.nextLine();
 
-                if (input.equalsIgnoreCase(room.getRoomInventory().getPuzzleInventory()
-                        .get(0).getPuzzleAnswer())) {
-                    System.out.println("You solved the puzzle correctly!");
-                    room.getRoomInventory().getPuzzleInventory().remove(0);
+                    if (input.equalsIgnoreCase(room.getRoomInventory().getPuzzleInventory()
+                            .get(0).getPuzzleAnswer())) {
+                        solved = true;
+                        attempts = 0;
+                        System.out.println("You solved the puzzle correctly!");
+                        room.getRoomInventory().getPuzzleInventory().remove(0);
+
+                    }
+                    else {
+                        attempts--;
+                        System.out.printf("The answer you provided is wrong, you still have " +
+                                "%s tries left.", attempts);
+                        if (attempts > 0) {
+                            System.out.println(" Try one more time.");
+                        }
+                    }
+                } catch (InputMismatchException ex) {
+                    ex.printStackTrace();
                 }
-            } catch (InputMismatchException ex) {
-                ex.printStackTrace();
             }
         }
     }

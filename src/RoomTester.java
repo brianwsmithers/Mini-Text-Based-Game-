@@ -69,13 +69,13 @@ public class RoomTester {
                         readPuzzles.getPuzzles().remove(k);
                     }
                 }
-
+                // Add newly created room to static hashmap that contains all rooms.
                 room.addRoom(room);
             }
         }
 
         // Make new player object and init player to the first room.
-        Player player = new Player(3);
+        Player player = new Player(1);
 
         // Display player's init location, location details, and mark it as visited.
         Room startingRoom = Objects.requireNonNull(Room.getRoom(player.getRoomNumber()));

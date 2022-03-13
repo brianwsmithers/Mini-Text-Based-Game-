@@ -1,14 +1,10 @@
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.LinkedList;
-import java.util.List;
 import java.util.Scanner;
 
 public class ReadItems extends ReadTextFile {
 
-    String itemName;
-    String itemDescription;
-    String itemSpawnLocation;
     LinkedList<Item> items = new LinkedList<>();
 
     public ReadItems(String filePath) {

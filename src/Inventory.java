@@ -1,18 +1,18 @@
 import java.util.LinkedList;
-import java.util.Scanner;
 
 public class Inventory {
 
-    private final LinkedList<Item> inventory1 = new LinkedList<>();
+    private final LinkedList<Item> itemInventory = new LinkedList<>();
+    private final LinkedList<Puzzle> puzzleInventory = new LinkedList<>();
 
-    //TODO scanner
-    private Scanner scanner() {
-        return new Scanner(System.in);
+    // Add object to item inventory for initialization
+    public void addItem(Item item) {
+        itemInventory.add(item);
     }
 
-    // Add object to inventory for initialization
-    public void addItem(Item item) {
-        inventory1.add(item);
+    // Add object to puzzle inventory for initialization
+    public void addPuzzle(Puzzle puzzle) {
+        puzzleInventory.add(puzzle);
     }
 
     // Transfer between Player, Monster or Room
@@ -21,7 +21,7 @@ public class Inventory {
             if (inventory2.get(i).getName().equalsIgnoreCase(item)) {
                 // Transfer item from inventory1 to inventory2
                 Item tempItem = inventory2.get(i);
-                inventory1.add(tempItem);
+                itemInventory.add(tempItem);
                 // Remove item from
                 inventory2.remove(i);
 
@@ -40,7 +40,7 @@ public class Inventory {
     }
 
     public String inspect(String item) {
-        for (Item value : inventory1) {
+        for (Item value : itemInventory) {
             if (value.getName().equalsIgnoreCase(item)) {
                 return value.getDescription();
             }
@@ -49,30 +49,30 @@ public class Inventory {
     }
 
     // Print room inventory contents
-    public String printInventory(Object object) {
+    public String printItemInventory(Object object) {
         StringBuilder roomInventorySB = new StringBuilder();
         String caller = object.getClass().getName();
 
         if (caller.equalsIgnoreCase("room")) {
-            if (inventory1.isEmpty()) {
+            if (itemInventory.isEmpty()) {
                 return String.format("The room does not have any items...%n");
             }
             else {
                 String append = "The room has the following items:";
                 roomInventorySB.append(append).append("\n");
-                for (Item item : inventory1) {
+                for (Item item : itemInventory) {
                     roomInventorySB.append(item.getName()).append("\n");
                 }
             }
         }
         else if (caller.equalsIgnoreCase("player")) {
-            if (inventory1.isEmpty()) {
+            if (itemInventory.isEmpty()) {
                 return String.format("You did not pickup any items yet...%n");
             }
             else {
                 String append = "Your inventory has the following items:";
                 roomInventorySB.append(append).append("\n");
-                for (Item item : inventory1) {
+                for (Item item : itemInventory) {
                     roomInventorySB.append(item.getName()).append("\n");
                 }
             }
@@ -80,7 +80,11 @@ public class Inventory {
         return roomInventorySB.toString();
     }
 
-    public LinkedList<Item> getInventory1() {
-        return inventory1;
+    public LinkedList<Item> getItemInventory() {
+        return itemInventory;
+    }
+
+    public LinkedList<Puzzle> getPuzzleInventory() {
+        return puzzleInventory;
     }
 }

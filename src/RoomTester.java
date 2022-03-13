@@ -75,7 +75,7 @@ public class RoomTester {
         }
 
         // Make new player object and init player to the first room.
-        Player player = new Player(1);
+        Player player = new Player(3);
 
         // Display player's init location, location details, and mark it as visited.
         Room startingRoom = Objects.requireNonNull(Room.getRoom(player.getRoomNumber()));

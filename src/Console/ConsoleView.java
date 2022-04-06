@@ -50,10 +50,14 @@ public class ConsoleView {
 
     public void itemInteractionMessage(boolean itemFound, PlayerController playerController, String action,
                                        String item) {
+        // Get players room
         Room playersRoom = Objects.requireNonNull(
                 Room.getRoom(playerController.getPlayerRoomNumber()));
+
+        // Get the name of the room
         String roomName = playersRoom.getRoomName();
 
+        // Print message item picked up or dropped or no item exists to pick up or drop
         String message = playerController.getPlayerInventoryController().
                 itemSuccessfullyInteractedWith(itemFound, action, item, roomName);
 

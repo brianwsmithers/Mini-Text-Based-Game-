@@ -35,4 +35,8 @@ public class InventoryController {
     public String inspect(String item) {
         return model.inspect(item);
     }
+
+    public LinkedList<Item> getItemInventory() {
+        return model.getItemInventory();
+    }
 }

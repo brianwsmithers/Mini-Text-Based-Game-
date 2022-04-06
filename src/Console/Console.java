@@ -1,8 +1,10 @@
 package Console;
 
+import Item.Item;
 import Player.*;
 import Room.*;
 
+import java.util.LinkedList;
 import java.util.Objects;
 import java.util.Scanner;
 
@@ -57,24 +59,30 @@ public class Console {
     }
 
     public boolean pickUp(String item, PlayerController playerController) {
-        item = item.stripTrailing();
+        // Get players room
         Room playersRoom = Objects.requireNonNull(
                 Room.getRoom(playerController.getPlayerRoomNumber()));
+
+        // Get item list
+        LinkedList<Item> roomInventory =
+                playersRoom.getRoomInventory().getItemInventory();
+
+        // Return true if item is in the room
         return playerController.getPlayerInventoryController().
-                getModel().transferItem(playersRoom.getRoomInventory().getItemInventory(),
-                        item);
+                getModel().transferItem(roomInventory, item);
     }
 
-    public boolean drop(String item, PlayerController playerController) {
-        item = item.stripTrailing();
-        Room playersRoom = Objects.requireNonNull(
-                Room.getRoom(playerController.getPlayerRoomNumber()));
-        return playerController.getPlayerInventoryController().
-                getModel().transferItem(playersRoom.getRoomInventory().getItemInventory(),
-                        item);
+    public boolean drop(String item, PlayerController playerController,
+                        RoomController roomController) {
+        // Get player Inventory
+        LinkedList<Item> playerInventoryList =
+                playerController.getPlayerInventoryController().getItemInventory();
+        // I think this needs to be roomController.getModel.getInventoryController
+        return roomController.getModel().getRoomInventory().
+                transferItem(playerInventoryList, item);
     }
 
     public String getItem() {
-        return item;
+        return item.stripTrailing();
     }
 }

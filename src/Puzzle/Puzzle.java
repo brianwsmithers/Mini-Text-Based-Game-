@@ -39,7 +39,7 @@ public class Puzzle {
     public static void puzzlePrompt(Room room) {
         System.out.println("");
         // Display puzzle description
-        System.out.println("Puzzle.Puzzle: " + room.getRoomInventory().getPuzzleInventory()
+        System.out.println("Puzzle: " + room.getRoomInventory().getPuzzleInventory()
                 .get(0).getPuzzleDescription());
 
         int attempts = room.getRoomInventory().getPuzzleInventory().get(0)

@@ -13,6 +13,10 @@ public class RoomController {
         this.model = model;
     }
 
+    public Room getModel() {
+        return model;
+    }
+
     public void printRoomPrompt() {
         view.printRoomPrompt(model);
     }

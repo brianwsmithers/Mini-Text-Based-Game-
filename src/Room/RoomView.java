@@ -1,16 +1,15 @@
 package Room;
 
+import Monster.Monster;
+import Player.PlayerController;
 import Puzzle.Puzzle;
+import Room.Room;
 
 import java.util.Arrays;
 import java.util.Map;
 
 public class RoomView {
 
-    /**
-     * Makes a list of rooms with a StringBuilder object.
-     * @return Returns the StringBuilder object.
-     */
     public static StringBuilder printMap() {
         Room.sb.setLength(0);
         for (Map.Entry<Integer, Room> set : Room.listOfRooms.entrySet()) {
@@ -19,12 +18,6 @@ public class RoomView {
         return Room.sb;
     }
 
-    /**
-     * Gets the details of a room.
-     * @param room object is necessary to pull model data.
-     * @return a String with the room number, room name, room description and room
-     * connections.
-     */
     public String toString(Room room) {
         return String.format("%s %s %s %s", room.getRoomNumber(), room.getRoomName(),
                 room.getRoomDescription(),
@@ -40,7 +33,7 @@ public class RoomView {
         }
     }
 
-    public void printRoomPrompt(Room room) {
+    public void printRoomPrompt(Room room, PlayerController playerController) {
         System.out.println(room.getRoomNumber());
         System.out.println(room.getRoomName());
         System.out.println(checkIfRoomVisited(room));
@@ -49,6 +42,9 @@ public class RoomView {
         // Check if the room has a puzzle...
         if (!room.getRoomInventory().getPuzzleInventory().isEmpty()) {
             Puzzle.puzzlePrompt(room);
+        }
+        if(!room.getMonstersInRooms().isEmpty()) {
+            Monster.monsterPrompt(room, playerController);
         }
     }
 }

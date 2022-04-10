@@ -1,7 +1,10 @@
 package Room;
 
 import Inventory.Inventory;
+import Monster.Monster;
+
 import java.util.HashMap;
+import java.util.LinkedList;
 
 public class Room {
 
@@ -11,6 +14,7 @@ public class Room {
     protected static StringBuilder sb = new StringBuilder();
     private final String[][] roomConnections;
     private final Inventory roomInventory;
+    private final LinkedList<Monster> monstersInRooms;
     private boolean visited;
 
     // This variable should become its own class and call it the ListOfRooms.
@@ -29,6 +33,7 @@ public class Room {
         this.roomConnections = roomConnections;
         this.roomInventory = roomInventory;
         this.visited = visited;
+        this.monstersInRooms = new LinkedList<>();
     }
 
     public int getRoomNumber() {
@@ -65,5 +70,17 @@ public class Room {
 
     public void setVisited(boolean visited) {
         this.visited = visited;
+    }
+
+    public void addMonster(Monster monster) {
+        monstersInRooms.add(monster);
+    }
+
+    public void removeMonster() {
+        monstersInRooms.removeFirst();
+    }
+
+    public LinkedList<Monster> getMonstersInRooms() {
+        return monstersInRooms;
     }
 }

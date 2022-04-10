@@ -2,6 +2,7 @@ package Inventory;
 
 import Item.Item;
 import Puzzle.Puzzle;
+import Monster.Monster;
 import java.util.LinkedList;
 
 public class Inventory {

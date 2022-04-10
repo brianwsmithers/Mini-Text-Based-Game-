@@ -1,17 +1,18 @@
 package FileReaders;
 
 import Item.Item;
+import Monster.Monster;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.LinkedList;
 import java.util.Scanner;
 
-public class ReadItems extends ReadTextFile {
+public class ReadMonsters extends ReadTextFile {
 
-    LinkedList<Item> items = new LinkedList<>();
+    LinkedList<Monster> monsters = new LinkedList<>();
 
-    public ReadItems(String filePath) {
+    public ReadMonsters(String filePath) {
         super(filePath);
     }
 
@@ -27,13 +28,11 @@ public class ReadItems extends ReadTextFile {
 
                 String[] words = line.split("\\.+");
 
-                items.add(new Item(
-                        Integer.parseInt(words[0]),
-                        words[1].stripLeading(),
-                        words[2].stripLeading(),
-                        words[3].stripLeading(),
-                        Integer.parseInt(words[4].stripLeading()),
-                        Boolean.parseBoolean(words[5])));
+                monsters.add(new Monster(Integer.parseInt(words[0].strip()),
+                        words[1].strip(), words[2].strip() + ".",
+                        Integer.parseInt(words[3].strip()),
+                        Integer.parseInt(words[4].strip()),
+                        Integer.parseInt(words[5].strip())));
             }
         }
         catch (FileNotFoundException e) {
@@ -41,7 +40,7 @@ public class ReadItems extends ReadTextFile {
         }
     }
 
-    public LinkedList<Item> getItems() {
-        return items;
+    public LinkedList<Monster> getMonsters() {
+        return monsters;
     }
 }

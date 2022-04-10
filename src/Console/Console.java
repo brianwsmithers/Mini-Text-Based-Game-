@@ -33,7 +33,10 @@ public class Console {
         item = "";
         if (inputValidator[0].equalsIgnoreCase("pickup")
                 || inputValidator[0].equalsIgnoreCase("inspect")
-                || inputValidator[0].equalsIgnoreCase("drop")) {
+                || inputValidator[0].equalsIgnoreCase("drop")
+                || inputValidator[0].equalsIgnoreCase("use")
+                || inputValidator[0].equalsIgnoreCase("equip")
+                || inputValidator[0].equalsIgnoreCase("unequip")) {
             input = inputValidator[0];
             // recombine string to pass for method
             for (int i = 1; i < inputValidator.length; i++) {
@@ -84,5 +87,17 @@ public class Console {
 
     public String getItem() {
         return item.stripTrailing();
+    }
+
+    public void heal(String itemName, PlayerController playerController) {
+        playerController.getModel().heal(itemName);
+    }
+
+    public void equip(String itemName, PlayerController playerController) {
+        System.out.println(playerController.getModel().equipItem(itemName));
+    }
+
+    public void unEquipItem(String item, PlayerController playerController) {
+        System.out.println(playerController.getModel().unEquipItem(item));
     }
 }

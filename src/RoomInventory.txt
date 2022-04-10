@@ -1,3 +1,3 @@
-1. Hammer. Weapon. 10. This is a hammer.
-3. Potion. Health. 5. This is a potion.
-5. Dried Meat. Health. 3. This is dried meat.
+1. Hammer. Weapon. This is a hammer. 10. true.
+3. Potion. Health. This is a potion. 5. false.
+5. Dried Meat. Health. This is dried meat. 3. false.

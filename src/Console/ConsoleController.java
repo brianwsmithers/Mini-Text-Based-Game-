@@ -27,7 +27,8 @@ public class ConsoleController {
                 case "travel":
                     consoleView.whichDirectionToTravel();
                     console.masterTraverse(playerController, roomController);
-                    roomController.printRoomPrompt();
+                    //TODO the consoleView should call roomController.printRoomPrompt
+                    roomController.printRoomPrompt(playerController);
                     break;
                 case "explore":
                     consoleView.explore(playerController);
@@ -49,6 +50,14 @@ public class ConsoleController {
                 case "inventory":
                     consoleView.printInventory(playerController);
                     break;
+                case "use":
+                    console.heal(console.getItem(), playerController);
+                    break;
+                case "equip":
+                    console.equip(console.getItem(), playerController);
+                    break;
+                case "unequip":
+                    console.unEquipItem(console.getItem(), playerController);
                 case "exit":
                     break;
                 default: consoleView.invalidCommand();

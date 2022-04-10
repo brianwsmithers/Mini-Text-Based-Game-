@@ -17,6 +17,9 @@ public class ConsoleView {
                 "Inspect%n" +
                 "Drop%n" +
                 "Inventory%n" +
+                "Use%n" +
+                "Equip%n" +
+                "Unequip%n" +
                 "Exit%n");
     }
 

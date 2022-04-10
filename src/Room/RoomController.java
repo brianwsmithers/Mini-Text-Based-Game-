@@ -1,5 +1,7 @@
 package Room;
 
+import Player.PlayerController;
+
 public class RoomController {
     private Room model;
     private RoomView view;
@@ -17,7 +19,7 @@ public class RoomController {
         return model;
     }
 
-    public void printRoomPrompt() {
-        view.printRoomPrompt(model);
+    public void printRoomPrompt(PlayerController playerController) {
+        view.printRoomPrompt(model, playerController);
     }
 }
